@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiŞARİS+ - Kayıt Detay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">DiŞARİS+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Geri Bildirim Oluştur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="liste.html">Kayıt Listesi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Gösterge Paneli</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col">
+                <a href="liste.html" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Listeye Dön
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sol Kolon - Geri Bildirim Detayları -->
+            <div class="col-lg-8">
+                <!-- Geri Bildirim İçeriği -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Geri Bildirim Detayları</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <strong>Kayıt ID:</strong> #001
+                        </div>
+                        <div class="mb-3">
+                            <strong>Başlık:</strong>
+                            <h4>Hasta Bekleme Süresi Şikayeti</h4>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Geri Bildirim Türü:</strong>
+                            <span class="badge bg-info">Hasta Şikayeti</span>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Gönderen:</strong> Ahmet Yılmaz
+                        </div>
+                        <div class="mb-3">
+                            <strong>Birim:</strong> Acil Servis
+                        </div>
+                        <div class="mb-3">
+                            <strong>Oluşturulma Tarihi:</strong> 15.01.2025 - 14:30
+                        </div>
+                        <hr>
+                        <div>
+                            <strong>İçerik:</strong>
+                            <div class="mt-2 p-3 bg-light rounded">
+                                <p>
+                                    Acil serviste bekleyen hastalar için bekleme süreleri oldukça uzun. 
+                                    Özellikle akşam saatlerinde yoğunluk nedeniyle hastalar saatlerce beklemek zorunda kalıyor. 
+                                    Bu durum hem hasta memnuniyetini düşürüyor hem de acil durumların zamanında müdahale edilmesini engelliyor. 
+                                    Personel sayısının artırılması veya triyaj sürecinin optimize edilmesi gerekiyor.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Süreç Durumu -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Süreç Durumu</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <strong>Durum:</strong>
+                            <span class="badge bg-warning">İncelemede</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Atanan Birim:</strong> Kalite Yönetimi
+                        </div>
+                        <div class="mb-2">
+                            <strong>Son Güncelleme:</strong> 15.01.2025 - 15:00
+                        </div>
+                        <div class="progress mt-3" style="height: 25px;">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%">
+                                İnceleme Aşamasında
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sağ Kolon - Analiz Sonuçları -->
+            <div class="col-lg-4">
+                <!-- Analiz Sonuçları -->
+                <div class="card mb-4 risk-high">
+                    <div class="card-header">
+                        <h5 class="mb-0">Analiz Sonuçları</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="analiz-sonucu mb-3">
+                            <strong>Kategori:</strong>
+                            <div class="mt-1">
+                                <span class="badge bg-info">Hasta Şikayeti</span>
+                            </div>
+                        </div>
+
+                        <div class="analiz-sonucu mb-3">
+                            <strong>Duygu Durumu:</strong>
+                            <div class="mt-1">
+                                <span class="duygu-negatif fw-bold">Negatif</span>
+                            </div>
+                        </div>
+
+                        <div class="analiz-sonucu mb-3">
+                            <strong>Risk Seviyesi:</strong>
+                            <div class="mt-1">
+                                <span class="badge badge-risk-high">Yüksek</span>
+                            </div>
+                        </div>
+
+                        <div class="analiz-sonucu">
+                            <strong>Sistem Önerisi:</strong>
+                            <div class="mt-2 p-2 bg-light rounded">
+                                <small>
+                                    Bu geri bildirim yüksek öncelikli olarak değerlendirilmiştir. 
+                                    Acil müdahale gerektiren bir durum söz konusudur. 
+                                    İlgili birimlerin derhal bilgilendirilmesi önerilir.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hızlı İşlemler -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Hızlı İşlemler</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="rapor.html?id=1" class="btn btn-primary">
+                                <i class="bi bi-file-earmark-pdf"></i> Rapor Oluştur
+                            </a>
+                            <button class="btn btn-outline-secondary">
+                                <i class="bi bi-pencil"></i> Durum Güncelle
+                            </button>
+                            <button class="btn btn-outline-info">
+                                <i class="bi bi-share"></i> Birime İlet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 DiŞARİS+ - Geri Bildirim Yönetim Sistemi</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

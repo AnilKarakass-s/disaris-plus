@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiŞARİS+ - Gösterge Paneli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">DiŞARİS+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Geri Bildirim Oluştur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="liste.html">Kayıt Listesi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">Gösterge Paneli</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col">
+                <h2>Gösterge Paneli</h2>
+                <p class="text-muted">Sistem genel durumu ve analitik özetler</p>
+            </div>
+        </div>
+
+        <!-- Rapor Grafikleri Bölümü -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Mevcut Durum Analizi Bulguları</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">
+                            Bu çalışmada elde edilen bulgular, DiŞARİS+ sisteminin ilk prototip sürümü için oluşturulan örnek (sentetik) şikâyet ve geri bildirim kayıtlarına dayanmaktadır. 
+                            Yapılan analizlerde, sistemin şikâyet verisini özetleyebilme ve genel eğilimleri görünür hâle getirebilme yeteneği incelenmiştir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Şekil 4.1: Şikayet Türlerine Göre Genel Dağılım -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Şikâyet Türlerine Göre Genel Dağılım Grafiği</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="text-center mb-3">
+                                    <h6 class="mb-2"><i class="fas fa-user-injured me-2 text-info"></i>Hasta Şikayetleri</h6>
+                                    <div style="position: relative; height: 250px;">
+                                        <canvas id="raporSikayetTurleriHasta"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-center mb-3">
+                                    <h6 class="mb-2"><i class="fas fa-user-md me-2 text-success"></i>Çalışan Geri Bildirimleri</h6>
+                                    <div style="position: relative; height: 250px;">
+                                        <canvas id="raporSikayetTurleriCalisan"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-light mt-3 mb-0">
+                            <small>
+                                <strong>Bulgular:</strong> Şikâyetlerin türlerine göre dağılımı incelendiğinde, bazı konu başlıklarının diğerlerine kıyasla daha yoğun olduğu görülmektedir. 
+                                Bu dağılım, sistem içerisinde hangi alanlara daha fazla odaklanılması gerektiğine dair genel bir fikir vermektedir.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Şekil 4.2: Klinik Bazlı Şikayet Yoğunluğu -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Klinik Bazlı Şikâyet Yoğunluğu Görünümü</h5>
+                    </div>
+                    <div class="card-body">
+                        <div style="position: relative; height: 350px;">
+                            <canvas id="raporKlinikBazli"></canvas>
+                        </div>
+                        <div class="alert alert-light mt-3 mb-0">
+                            <small>
+                                <strong>Bulgular:</strong> Klinik bazlı değerlendirmelerde, farklı kliniklerde benzer şikâyet türlerinin tekrar ettiği gözlemlenmiştir. 
+                                Bu durum, bazı sorunların tekil vakalardan ziyade süreç kaynaklı olabileceğine işaret etmektedir.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Şekil 4.3: Zaman Bazlı Şikayet Dağılımı -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Zaman Bazlı Şikâyet Dağılımı Grafiği</h5>
+                    </div>
+                    <div class="card-body">
+                        <div style="position: relative; height: 350px;">
+                            <canvas id="raporZamanBazli"></canvas>
+                        </div>
+                        <div class="alert alert-light mt-3 mb-0">
+                            <small>
+                                <strong>Bulgular:</strong> Zaman ekseninde yapılan incelemelerde, belirli dönemlerde şikâyet sayılarında artışlar yaşandığı görülmektedir. 
+                                Bu tür dalgalanmalar, dönemsel iş yükü, operasyonel yoğunluk veya süreç değişiklikleri ile ilişkilendirilebilecek göstergeler sunmaktadır.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- İstatistik Kartları -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body">
+                        <div class="stats-number">156</div>
+                        <div class="stats-label">Toplam Geri Bildirim</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body">
+                        <div class="stats-number" style="color: var(--danger-color);">23</div>
+                        <div class="stats-label">Yüksek Riskli</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body">
+                        <div class="stats-number" style="color: var(--warning-color);">45</div>
+                        <div class="stats-label">Orta Riskli</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <div class="card-body">
+                        <div class="stats-number" style="color: var(--success-color);">88</div>
+                        <div class="stats-label">Düşük Riskli</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grafikler -->
+        <div class="row mb-4">
+            <!-- Duygu Dağılımı Pasta Grafik -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Duygu Durumu Dağılımı</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="duyguChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kategori Dağılımı Çubuk Grafik -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Kategori Bazlı Dağılım</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="kategoriChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DDI Analiz Sonuçları Bölümü -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="fas fa-brain me-2"></i>DDI Analiz Sonuçlarına İlişkin Bulgular</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">
+                            DiŞARİS+ prototipi kapsamında kullanılan doğal dil işleme modülü, örnek şikâyet ve geri bildirim metinleri üzerinde kategori, duygu durumu ve risk seviyesi belirlemek amacıyla test edilmiştir. 
+                            Yapılan değerlendirmelerde, metinlerin büyük bir bölümünün sistem tarafından anlamlı biçimde sınıflandırılabildiği görülmüştür.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Şekil 4.4: DDI Analiz Sonuçlarına Göre Kategori Dağılımı -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">DDI Analiz Sonuçlarına Göre Kategori Dağılımı</h5>
+                    </div>
+                    <div class="card-body">
+                        <div style="position: relative; height: 350px;">
+                            <canvas id="ddiKategoriDagilimi"></canvas>
+                        </div>
+                        <div class="alert alert-light mt-3 mb-0">
+                            <small>
+                                <strong>Bulgular:</strong> Kategori bazlı değerlendirmelerde, bazı şikâyet türlerinin diğerlerine kıyasla daha yoğun olduğu görülmektedir. 
+                                Bu dağılım, sistemin hangi konu başlıklarında daha fazla veri ürettiğini ve analizlerin hangi alanlarda yoğunlaştığını göstermektedir.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Şekil 4.5: Duygu Analizi Sonuçlarının Genel Dağılımı -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Duygu Analizi Sonuçlarının Genel Dağılımı</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div style="position: relative; height: 300px;">
+                                    <canvas id="ddiDuyguDagilimi"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mt-4">
+                                    <h6 class="mb-3">Duygu Durumu İstatistikleri</h6>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span><i class="fas fa-circle text-danger me-2"></i>Negatif</span>
+                                            <strong>78 (%50.0)</strong>
+                                        </div>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 50%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span><i class="fas fa-circle text-info me-2"></i>Nötr</span>
+                                            <strong>45 (%28.8)</strong>
+                                        </div>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 28.8%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span><i class="fas fa-circle text-success me-2"></i>Pozitif</span>
+                                            <strong>33 (%21.2)</strong>
+                                        </div>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 21.2%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-light mt-3 mb-0">
+                            <small>
+                                <strong>Bulgular:</strong> Duygu analizi sonuçları incelendiğinde, şikâyet metinlerinin büyük bir bölümünün negatif veya nötr içerik taşıdığı gözlemlenmiştir. 
+                                Pozitif geri bildirimler ise daha sınırlı bir oranda yer almakta olup, sistemin teşekkür ve memnuniyet bildirimlerini de ayırt edebildiğini göstermektedir.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Şekil 4.6: Kategori Bazlı Analiz Sonuçlarının Karşılaştırmalı Görünümü -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Kategori Bazlı Analiz Sonuçlarının Karşılaştırmalı Görünümü</h5>
+                    </div>
+                    <div class="card-body">
+                        <div style="position: relative; height: 400px;">
+                            <canvas id="ddiKategoriKarsilastirma"></canvas>
+                        </div>
+                        <div class="alert alert-light mt-3 mb-0">
+                            <small>
+                                <strong>Bulgular:</strong> Kategori bazlı karşılaştırmalar, bazı konu başlıklarında analiz sonuçlarının daha tutarlı olduğunu, bazı alanlarda ise iyileştirmeye açık durumlar bulunduğunu ortaya koymaktadır. 
+                                Bu durum, DDI analiz sürecinin farklı metin türlerine karşı değişken performans gösterebildiğine işaret etmektedir.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk ve Trend Analizi Bölümü -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card border-warning">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Risk ve Trend Analizi Bulguları</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">
+                            Analiz sonuçları, zaman içinde ortaya çıkan değişimler ile risk göstergelerine dair genel bir görünüm sunmaktadır. 
+                            Bu analizler, tekil şikâyet kayıtlarından çok, belirli konuların zaman içinde nasıl bir eğilim gösterdiğini incelemeye yöneliktir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Şekil 4.7: Zaman Bazlı Şikayet Yoğunluğu ve Risk Göstergeleri -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Zaman Bazlı Şikâyet Yoğunluğu ve Risk Göstergeleri</h5>
+                    </div>
+                    <div class="card-body">
+                        <div style="position: relative; height: 400px;">
+                            <canvas id="zamanBazliRiskGostergeleri"></canvas>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h6 class="text-muted mb-2">Toplam Şikayet</h6>
+                                        <h3 class="mb-0">156</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h6 class="text-muted mb-2">Yüksek Risk Dönemleri</h6>
+                                        <h3 class="mb-0 text-danger">3</h3>
+                                        <small class="text-muted">Temmuz, Ağustos, Eylül</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h6 class="text-muted mb-2">Ortalama Aylık Artış</h6>
+                                        <h3 class="mb-0 text-warning">+12%</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-light mt-3 mb-0">
+                            <small>
+                                <strong>Bulgular:</strong> Elde edilen sonuçlar, bazı şikâyet türlerinin belirli dönemlerde artış gösterdiğini ve bu artışların ilgili süreçler açısından risk oluşturabileceğini göstermiştir. 
+                                Özellikle aynı kategori altında kısa zaman aralıklarında tekrar eden kayıtlar, sistem tarafından dikkat edilmesi gereken alanlar olarak öne çıkmıştır. 
+                                Sonuçlar, DiŞARİS+ sisteminin mevcut durumu özetlemenin yanı sıra, potansiyel risklerin erken aşamada değerlendirilmesine olanak sağladığını göstermektedir.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Şikayet Türleri Dağılımı - Kompakt Grafikler -->
+        <div class="row mb-4">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Şikayet Türlerine Göre Dağılım Analizi</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Hasta Şikayetleri -->
+                            <div class="col-md-6">
+                                <div class="text-center mb-3">
+                                    <h6 class="mb-2"><i class="fas fa-user-injured me-2 text-info"></i>Hasta Şikayetleri</h6>
+                                    <div style="position: relative; height: 200px;">
+                                        <canvas id="hastaSikayetChart"></canvas>
+                                    </div>
+                                    <div id="hastaSikayetLegend" class="mt-2 small"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Çalışan Geri Bildirimleri -->
+                            <div class="col-md-6">
+                                <div class="text-center mb-3">
+                                    <h6 class="mb-2"><i class="fas fa-user-md me-2 text-success"></i>Çalışan Geri Bildirimleri</h6>
+                                    <div style="position: relative; height: 200px;">
+                                        <canvas id="calisanGeriBildirimChart"></canvas>
+                                    </div>
+                                    <div id="calisanGeriBildirimLegend" class="mt-2 small"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="alert alert-info mb-0">
+                                    <small>
+                                        <strong>Analiz:</strong> Şikayetlerin türlerine göre dağılımı incelendiğinde, 
+                                        bazı konu başlıklarının diğerlerine kıyasla daha yoğun olduğu görülmektedir. 
+                                        Bu dağılım, sistem içerisinde hangi alanlara daha fazla odaklanılması gerektiğine 
+                                        dair genel bir fikir vermektedir.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk Seviyesi Dağılımı -->
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Risk Seviyesi Dağılımı</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="riskChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zaman Serisi Grafik -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Aylık Geri Bildirim Trendi</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="trendChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Öncelikli Kayıtlar -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Öncelikli Müdahale Gerektiren Kayıtlar</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Başlık</th>
+                                        <th>Kategori</th>
+                                        <th>Risk</th>
+                                        <th>Tarih</th>
+                                        <th>Durum</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="risk-high">
+                                        <td>#001</td>
+                                        <td>Hasta Bekleme Süresi Şikayeti</td>
+                                        <td><span class="badge bg-info">Hasta Şikayeti</span></td>
+                                        <td><span class="badge badge-risk-high">Yüksek</span></td>
+                                        <td>15.01.2025</td>
+                                        <td><span class="badge bg-warning">İncelemede</span></td>
+                                        <td>
+                                            <a href="detay.html?id=1" class="btn btn-sm btn-outline-primary">Detay</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="risk-high">
+                                        <td>#015</td>
+                                        <td>Personel Güvenlik Endişesi</td>
+                                        <td><span class="badge bg-success">Personel Geri Bildirimi</span></td>
+                                        <td><span class="badge badge-risk-high">Yüksek</span></td>
+                                        <td>14.01.2025</td>
+                                        <td><span class="badge bg-danger">Acil</span></td>
+                                        <td>
+                                            <a href="detay.html?id=15" class="btn btn-sm btn-outline-primary">Detay</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="risk-high">
+                                        <td>#028</td>
+                                        <td>Kalite Standartları İhlali</td>
+                                        <td><span class="badge bg-warning">Kalite Değerlendirme</span></td>
+                                        <td><span class="badge badge-risk-high">Yüksek</span></td>
+                                        <td>13.01.2025</td>
+                                        <td><span class="badge bg-warning">İncelemede</span></td>
+                                        <td>
+                                            <a href="detay.html?id=28" class="btn btn-sm btn-outline-primary">Detay</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 DiŞARİS+ - Geri Bildirim Yönetim Sistemi</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

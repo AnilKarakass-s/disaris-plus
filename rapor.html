@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiŞARİS+ - Rapor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark no-print">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">DiŞARİS+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Geri Bildirim Oluştur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="liste.html">Kayıt Listesi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Gösterge Paneli</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <div class="container mt-4">
+        <div class="row mb-3 no-print">
+            <div class="col">
+                <a href="detay.html?id=1" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Detaya Dön
+                </a>
+                <button class="btn btn-primary ms-2" onclick="window.print()">
+                    <i class="bi bi-printer"></i> Yazdır
+                </button>
+            </div>
+        </div>
+
+        <!-- Rapor İçeriği -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h5 class="mb-1">Geri Bildirim Analiz Raporu</h5>
+                        <small class="text-white-50">DiŞARİS+ Sistem Raporu</small>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div class="small">
+                            <strong>Rapor No:</strong> RPT-2025-001<br>
+                            <strong>Tarih:</strong> 15.01.2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Temel Bilgiler -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6 class="text-muted">Geri Bildirim Bilgileri</h6>
+                        <table class="table table-sm table-borderless">
+                            <tr>
+                                <td width="40%"><strong>Kayıt ID:</strong></td>
+                                <td>#001</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Başlık:</strong></td>
+                                <td>Hasta Bekleme Süresi Şikayeti</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Geri Bildirim Türü:</strong></td>
+                                <td><span class="badge bg-info">Hasta Şikayeti</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gönderen:</strong></td>
+                                <td>Ahmet Yılmaz</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Birim:</strong></td>
+                                <td>Acil Servis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Oluşturulma Tarihi:</strong></td>
+                                <td>15.01.2025 - 14:30</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-muted">Analiz Sonuçları</h6>
+                        <table class="table table-sm table-borderless">
+                            <tr>
+                                <td width="40%"><strong>Kategori:</strong></td>
+                                <td><span class="badge bg-info">Hasta Şikayeti</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Duygu Durumu:</strong></td>
+                                <td><span class="duygu-negatif fw-bold">Negatif</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Risk Seviyesi:</strong></td>
+                                <td><span class="badge badge-risk-high">Yüksek</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Süreç Durumu:</strong></td>
+                                <td><span class="badge bg-warning">İncelemede</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Atanan Birim:</strong></td>
+                                <td>Kalite Yönetimi</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Son Güncelleme:</strong></td>
+                                <td>15.01.2025 - 15:00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Geri Bildirim İçeriği -->
+                <div class="mb-4">
+                    <h6 class="text-muted mb-3">Geri Bildirim İçeriği</h6>
+                    <div class="p-3 bg-light rounded">
+                        <p class="mb-0">
+                            Acil serviste bekleyen hastalar için bekleme süreleri oldukça uzun. 
+                            Özellikle akşam saatlerinde yoğunluk nedeniyle hastalar saatlerce beklemek zorunda kalıyor. 
+                            Bu durum hem hasta memnuniyetini düşürüyor hem de acil durumların zamanında müdahale edilmesini engelliyor. 
+                            Personel sayısının artırılması veya triyaj sürecinin optimize edilmesi gerekiyor.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Analiz Detayları -->
+                <div class="mb-4">
+                    <h6 class="text-muted mb-3">Analiz Detayları ve Değerlendirme</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6>Kategori Analizi</h6>
+                                    <p class="small mb-0">
+                                        Geri bildirim içeriği analiz edildiğinde, bu kayıt "Hasta Şikayeti" kategorisine 
+                                        uygun görülmüştür. İçerik, hasta deneyimi ve hizmet kalitesi ile ilgili 
+                                        sorunları içermektedir.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6>Duygu Analizi</h6>
+                                    <p class="small mb-0">
+                                        Metin analizi sonucunda, geri bildirimin genel duygu durumu "Negatif" olarak 
+                                        belirlenmiştir. Bu durum, içerikteki sorunların ciddiyetini ve aciliyetini 
+                                        göstermektedir.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Değerlendirmesi -->
+                <div class="mb-4">
+                    <h6 class="text-muted mb-3">Risk Değerlendirmesi ve Sistem Önerisi</h6>
+                    <div class="alert alert-danger">
+                        <h6 class="alert-heading">Yüksek Risk Seviyesi</h6>
+                        <p class="mb-0">
+                            Bu geri bildirim yüksek öncelikli olarak değerlendirilmiştir. Acil müdahale gerektiren bir durum söz konusudur. 
+                            İlgili birimlerin derhal bilgilendirilmesi ve gerekli aksiyonların alınması önerilir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Süreç Takibi -->
+                <div class="mb-4">
+                    <h6 class="text-muted mb-3">Süreç Takibi</h6>
+                    <div class="timeline">
+                        <div class="d-flex mb-2">
+                            <div class="flex-shrink-0">
+                                <span class="badge bg-primary">1</span>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <strong>Kayıt Oluşturuldu</strong>
+                                <div class="small text-muted">15.01.2025 - 14:30</div>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="flex-shrink-0">
+                                <span class="badge bg-success">2</span>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <strong>Analiz Tamamlandı</strong>
+                                <div class="small text-muted">15.01.2025 - 14:32</div>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="flex-shrink-0">
+                                <span class="badge bg-warning">3</span>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <strong>Kalite Yönetimine Atandı</strong>
+                                <div class="small text-muted">15.01.2025 - 15:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notlar -->
+                <div class="mb-4">
+                    <h6 class="text-muted mb-3">Notlar ve Yorumlar</h6>
+                    <div class="p-3 bg-light rounded">
+                        <p class="small text-muted mb-0">
+                            Bu rapor, DiŞARİS+ sistemi tarafından otomatik olarak oluşturulmuştur. 
+                            Rapor içeriği, sistem analiz sonuçlarına dayanmaktadır.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted text-center small">
+                <p class="mb-0">
+                    DiŞARİS+ - Geri Bildirim Yönetim Sistemi | Rapor Oluşturulma: 15.01.2025 - 15:15
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 no-print">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 DiŞARİS+ - Geri Bildirim Yönetim Sistemi</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

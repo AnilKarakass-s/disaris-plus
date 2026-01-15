@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiŞARİS+ - Hasta Geri Bildirimi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">DiŞARİS+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Geri Bildirim Oluştur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="liste.html">Kayıt Listesi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Gösterge Paneli</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col">
+                <a href="index.html" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Geri Dön
+                </a>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0"><i class="fas fa-user-injured me-2"></i>Hasta Geri Bildirim Formu</h4>
+                    </div>
+                    <div class="card-body">
+                        <form class="needs-validation" novalidate onsubmit="return submitHastaGeriBildirim(event)">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="hastaAd" class="form-label">Ad Soyad <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="hastaAd" required placeholder="Ad ve soyad">
+                                    <div class="invalid-feedback">Lütfen adınızı giriniz.</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="hastaTC" class="form-label">TC Kimlik No</label>
+                                    <input type="text" class="form-control" id="hastaTC" placeholder="TC Kimlik numarası (opsiyonel)" maxlength="11">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="hastaYas" class="form-label">Yaş</label>
+                                    <input type="number" class="form-control" id="hastaYas" placeholder="Yaş (opsiyonel)" min="0" max="120">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="hastaCinsiyet" class="form-label">Cinsiyet</label>
+                                    <select class="form-select" id="hastaCinsiyet">
+                                        <option value="">Seçiniz...</option>
+                                        <option value="erkek">Erkek</option>
+                                        <option value="kadin">Kadın</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hastaBaslik" class="form-label">Geri Bildirim Başlığı <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="hastaBaslik" required placeholder="Geri bildiriminizin kısa başlığını giriniz">
+                                <div class="invalid-feedback">Lütfen bir başlık giriniz.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hastaKategori" class="form-label">Geri Bildirim Türü <span class="text-danger">*</span></label>
+                                <select class="form-select" id="hastaKategori" required>
+                                    <option value="">Seçiniz...</option>
+                                    <option value="hizmet-kalitesi">Hizmet Kalitesi</option>
+                                    <option value="bekleme-suresi">Bekleme Süresi</option>
+                                    <option value="personel-davranisi">Personel Davranışı</option>
+                                    <option value="temizlik-hijyen">Temizlik ve Hijyen</option>
+                                    <option value="tedavi-sureci">Tedavi Süreci</option>
+                                    <option value="fiyat-odeme">Fiyat ve Ödeme</option>
+                                    <option value="memnuniyet">Memnuniyet / Teşekkür</option>
+                                    <option value="oneri">Öneri / Bilgilendirme</option>
+                                    <option value="diger">Diğer</option>
+                                </select>
+                                <div class="invalid-feedback">Lütfen geri bildirim türünü seçiniz.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hastaIcerik" class="form-label">Geri Bildirim Detayı <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="hastaIcerik" rows="6" required placeholder="Geri bildiriminizin detaylı açıklamasını buraya yazınız. Deneyimlerinizi, gözlemlerinizi, önerilerinizi veya memnuniyetinizi paylaşabilirsiniz. Hangi birimde olduğunu, tarih ve saat bilgisini mümkünse belirtiniz..."></textarea>
+                                <div class="invalid-feedback">Lütfen geri bildirim detayını giriniz.</div>
+                                <small class="form-text text-muted">
+                                    Geri bildiriminiz otomatik olarak analiz edilecek ve kategorize edilecektir.
+                                </small>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="hastaBirim" class="form-label">İlgili Birim/Departman</label>
+                                    <input type="text" class="form-control" id="hastaBirim" placeholder="Örn: Acil Servis, Poliklinik, Laboratuvar">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="hastaTarih" class="form-label">Olay/Observasyon Tarihi</label>
+                                    <input type="date" class="form-control" id="hastaTarih">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hastaIletisim" class="form-label">İletişim Bilgisi</label>
+                                <input type="text" class="form-control" id="hastaIletisim" placeholder="Telefon veya e-posta (opsiyonel)">
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i> Geri Bildirimi Gönder
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 DiŞARİS+ - Geri Bildirim Yönetim Sistemi</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

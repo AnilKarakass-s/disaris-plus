@@ -1,0 +1,126 @@
+/* DiŞARİS+ Sistem Stil Dosyası */
+
+:root {
+    --primary-color: #0066cc;
+    --secondary-color: #004499;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    --light-bg: #f8f9fa;
+    --dark-text: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+}
+
+.navbar {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.risk-high {
+    background-color: #fee;
+    border-left: 4px solid var(--danger-color);
+}
+
+.risk-medium {
+    background-color: #fff8e1;
+    border-left: 4px solid var(--warning-color);
+}
+
+.risk-low {
+    background-color: #e8f5e9;
+    border-left: 4px solid var(--success-color);
+}
+
+.badge-risk-high {
+    background-color: var(--danger-color);
+}
+
+.badge-risk-medium {
+    background-color: var(--warning-color);
+    color: #000;
+}
+
+.badge-risk-low {
+    background-color: var(--success-color);
+}
+
+.analiz-sonucu {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.duygu-pozitif {
+    color: var(--success-color);
+}
+
+.duygu-negatif {
+    color: var(--danger-color);
+}
+
+.duygu-nötr {
+    color: var(--info-color);
+}
+
+.stats-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stats-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.table-responsive {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    margin-top: 50px;
+}
